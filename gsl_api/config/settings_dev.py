@@ -9,3 +9,7 @@ GSL_OPTIONS = {
     'gsl_base_path': '/app/Gslc', # folder containing gslc_lib
     'gsl_compiler_path': '/app/Gslc/bin/Gslc/Gslc.exe'
 }
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:8080",
+]
