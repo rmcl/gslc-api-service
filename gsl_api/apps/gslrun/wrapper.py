@@ -47,19 +47,13 @@ class GSLWrapper(object):
             output_json_path
         ]
 
-        stdout_fp = open(stdout_path, 'w+')
-        stderr_fp = open(stderr_path, 'w+')
-
-        result = subprocess.Popen(
-            args,
-            stdout=stdout_fp,
-            stderr=stderr_fp,
-            cwd=cwd_path)
-
-        stdout_fp.close()
-        stderr_fp.close()
-
-        return result
+        with open(stdout_path, 'w+') as stdout_fp:
+            with open(stderr_path, 'w+') as stderr_fp:
+                subprocess.Popen(
+                    args,
+                    stdout=stdout_fp,
+                    stderr=stderr_fp,
+                    cwd=cwd_path)
 
     def list_reference_genomes(self):
         working_path = self.settings.get('gsl_base_path', None)
